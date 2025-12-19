@@ -1,0 +1,103 @@
+.container{
+    display: flex;
+    justify-content: center;
+    height: 90svh;
+    align-items: center;
+    background: rgb(255, 250, 246);
+}
+
+.cardContainer{
+    height: 80vh;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80vw;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 10px 10px 15px rgba(173, 173, 173);
+}
+.cardContainer_left{
+    flex: 0.6;
+    padding: 2rem;
+    text-align: center;
+
+}
+.cardleft_heading{
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+.inputField{
+    padding-inline: 1.3rem;
+    padding-block: 0.8rem;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid silver;
+    width: 100%;
+
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.3rem;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 1.5rem;
+
+
+}
+.buttonWithOutline {
+    background: #fff;
+    border: 2px solid #18181a;
+    border-radius: 12px;
+    color: #18181a;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: all 0.2s ease;
+    
+    /* 3D effect - default shadow */
+    box-shadow: 0 6px 0 #18181a, 0 6px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .buttonWithOutline p {
+    margin: 0;
+  }
+  
+  /* Hover - thoda upar uthta hai */
+  .buttonWithOutline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #18181a, 0 10px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Active - dabaane par niche chala jata hai */
+  .buttonWithOutline:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #18181a, 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+.inputRow{
+    width: fit-content;
+    display: flex;
+    gap: 1.2rem;
+
+}
+
+.cardContainer_right{
+    flex: 0.4;
+    background: rgba(9, 27, 164, 0.664);
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-inline: 1.5rem;
+}
