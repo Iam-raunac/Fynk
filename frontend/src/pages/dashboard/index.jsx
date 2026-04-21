@@ -51,11 +51,11 @@ export default function dashboard() {
 
     }
     // long pooling
-    useState(() => {
-      setInterval(()=> {
-        dispatch(getAllPosts())
-      }, 900)
-    })  // every 900 milliseconds fetch posts
+    // useState(() => {
+    //   setInterval(()=> {
+    //     dispatch(getAllPosts())
+    //   }, 900)
+    // })  // every 900 milliseconds fetch posts
 
 
     if(authState.user) {   /* Render only when user data is available to avoid undefined errors  or use ? */ 

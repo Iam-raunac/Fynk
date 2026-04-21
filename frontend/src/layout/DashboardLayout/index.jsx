@@ -89,6 +89,7 @@ export default function DashboardLayout({children}) {
             return (
                  <div key={profile._id} className={styles.extraContainer_profile}>
                     <p>{profile.userId.name}</p>
+                    {/* <p>{profile?.userId?.name}</p> */}
                     </div>
                       
                     )

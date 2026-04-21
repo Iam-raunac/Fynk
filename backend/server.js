@@ -40,6 +40,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import postRoutes from "./routes/posts.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import chatRoutes from "./routes/chat.routes.js";
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use(express.urlencoded({ extended: true })); // optional for form data
 // Mount routes with prefixes
 app.use(postRoutes);
 app.use(userRoutes);
+app.use("/api/chat", chatRoutes);
 app.use(express.static("uploads"))
 
 const start = async () => {
