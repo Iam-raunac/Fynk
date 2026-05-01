@@ -175,7 +175,7 @@ export const increment_likes = async (req, res) => {
 
         post.likes += 1; // increment likes by 1
         await post.save();
-        return res.json({message: "Post liked successfully", likes: post.likes});
+        return res.json({message: "Post liked successfully", likes: post.likes}); 
         
         
     } catch(error){

@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 
 import styles from "./index.module.css";
 import { useRouter } from 'next/router';
+import ChatWidget from "@/components/ChatWidget";
 
 import { setTokenIsThere } from '@/config/redux/reducer/authReducer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -105,7 +106,7 @@ export default function DashboardLayout({children}) {
 
     </div>
 
-
+    <ChatWidget />
 
 
   </div>

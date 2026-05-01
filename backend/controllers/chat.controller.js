@@ -1,21 +1,50 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import ChatMessage from "../models/chat.model.js";
-import User from "../models/user.model.js";
+import {
+  getGeminiApiKey,
+  getGeminiModel,
+} from "../config/env.js";
 
-import dotenv from "dotenv";
-dotenv.config();
+class GeminiConfigError extends Error {
+  constructor() {
+    super(
+      "Gemini API key is missing. Set GEMINI_API_KEY in backend/.env or the project root .env."
+    );
+    this.name = "GeminiConfigError";
+  }
+}
 
-const genAI = new GoogleGenerativeAI("AIzaSyDSqra3_j-wue_NBTVNaNabSXWT6pJsUWU");
+let genAI;
+
+const getGeminiClient = () => {
+  const apiKey = getGeminiApiKey();
+
+  if (!apiKey) {
+    throw new GeminiConfigError();
+  }
+
+  if (!genAI) {
+    genAI = new GoogleGenAI({
+      apiKey,
+      vertexai: false,
+    });
+  }
+
+  return genAI;
+};
 
 export const sendMessage = async (req, res) => {
   try {
-    const userId = req.user._id;        // ✅ _id not .id
-    const user = req.user;              // ✅ already fetched in middleware, reuse it
+    const userId = req.user._id;
+    const user = req.user;
     const { message } = req.body;
+    const trimmedMessage = message?.trim();
 
-    if (!message || !message.trim()) {
+    if (!trimmedMessage) {
       return res.status(400).json({ error: "Message cannot be empty" });
     }
+
+    const ai = getGeminiClient();
 
     const systemPrompt = `
 You are a friendly personal assistant on Fynk, a social media platform.
@@ -35,44 +64,52 @@ User's name: ${user.name}
 User's bio: ${user.bio || "not provided"}
     `.trim();
 
-    // Save user message first
-    await ChatMessage.create({ userId, role: "user", content: message });
+    await ChatMessage.create({
+      userId,
+      role: "user",
+      content: trimmedMessage,
+    });
 
-    // Fetch last 20 messages for memory
     const history = await ChatMessage.find({ userId })
       .sort({ createdAt: 1 })
       .limit(20)
       .lean();
 
-    // Format history for Gemini (exclude last message — that's current one)
     const chatHistory = history.slice(0, -1).map((msg) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3.0-flash-preview",
-      systemInstruction: systemPrompt,
+    const chat = ai.chats.create({
+      model: getGeminiModel(),
+      config: { systemInstruction: systemPrompt },
+      history: chatHistory,
     });
 
-    const chat = model.startChat({ history: chatHistory });
-    const result = await chat.sendMessage(message);
-    const reply = result.response.text();
+    const result = await chat.sendMessage({ message: trimmedMessage });
+    const reply = result.text;
 
-    // Save assistant reply
+    if (!reply) {
+      throw new Error("Gemini returned an empty response.");
+    }
+
     await ChatMessage.create({ userId, role: "assistant", content: reply });
 
     res.status(200).json({ reply });
-
   } catch (error) {
     console.error("Chat error:", error);
+
+    if (error instanceof GeminiConfigError) {
+      return res.status(500).json({ error: error.message });
+    }
+
     res.status(500).json({ error: "Something went wrong" });
   }
 };
 
 export const getChatHistory = async (req, res) => {
   try {
-    const userId = req.user._id;        // ✅ _id not .id
+    const userId = req.user._id;
     const messages = await ChatMessage.find({ userId })
       .sort({ createdAt: 1 })
       .limit(50)
@@ -86,7 +123,7 @@ export const getChatHistory = async (req, res) => {
 
 export const clearChatHistory = async (req, res) => {
   try {
-    const userId = req.user._id;        // ✅ _id not .id
+    const userId = req.user._id;
     await ChatMessage.deleteMany({ userId });
     res.status(200).json({ message: "Chat history cleared" });
   } catch (error) {
