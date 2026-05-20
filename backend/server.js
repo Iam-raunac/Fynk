@@ -45,6 +45,7 @@ import chatRoutes from "./routes/chat.routes.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 9090;
 
 app.use(cors());
 app.use(express.json()); 
@@ -62,8 +63,8 @@ const start = async () => {
           "mongodb+srv://raunak1kumar2:K8kIG4brLOocLCGa@fynk.xzvivxb.mongodb.net/?retryWrites=true&w=majority&appName=Fynk"
         );
         console.log("Connected to MongoDB");
-        app.listen(9090, () => {
-            console.log("Server running on port 9090");
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
         });
     } catch (err) {
         console.error("MongoDB connection error:", err.message);

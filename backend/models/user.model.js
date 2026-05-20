@@ -9,11 +9,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+        index: true,
     },
     email:{
         type: String,
         required: true,
         unique: true,
+        index: true,
 
     },
     active: {
@@ -39,6 +41,7 @@ const userSchema = new Schema({
     token:{
         type: String,
         default: '',
+        index: true,
     },
 
 });

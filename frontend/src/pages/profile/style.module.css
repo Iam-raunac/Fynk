@@ -1,0 +1,166 @@
+.profilePage {
+  width: 100%;
+  max-width: 760px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-bottom: 1px solid #111;
+  padding-bottom: 1.2rem;
+}
+
+.avatarWrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+
+.avatarWrap img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatarAction {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: white;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.headerInfo h1 {
+  font-size: 2.2rem;
+}
+
+.headerInfo p,
+.headerInfo span,
+.details p,
+.detailRow span,
+.detailRow p,
+.empty {
+  color: #777;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton,
+.groupHeader button {
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primaryButton {
+  border: 0;
+  background: rgb(94, 118, 226);
+  color: white;
+}
+
+.primaryButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.secondaryButton,
+.groupHeader button {
+  border: 1px solid #111;
+  background: white;
+  color: #111;
+}
+
+.details,
+.editPanel,
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.details section {
+  border-bottom: 1px solid #111;
+  padding-bottom: 1rem;
+}
+
+.details h2,
+.posts h2,
+.editGroup h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.detailRow {
+  padding: 0.55rem 0;
+}
+
+.detailRow strong,
+.detailRow span,
+.detailRow p {
+  display: block;
+}
+
+.editPanel label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: bold;
+}
+
+.editPanel textarea,
+.editPanel input {
+  border: 1px solid silver;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  outline: none;
+  font: inherit;
+}
+
+.editPanel textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.groupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.threeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .threeGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,4 +1,4 @@
-.container {
+/* .container {
     padding: 1.2rem;
   }
   
@@ -11,10 +11,10 @@
   
   .navBarOptionContainer {
     display: flex;
-  }
+  } */
   
   /* 🔥 Fancy Button Style */
-  .buttonJoin {
+  /* .buttonJoin {
     position: relative;
     overflow: hidden;
     border: 1px solid #18181a;
@@ -52,20 +52,20 @@
     transform: translateY(225%) translateX(-50%);
     font-size: 0.8rem;
     font-weight: 500;
-  }
+  } */
   
-  .buttonJoin:after {
+  /* .buttonJoin:after {
     content: "";
     position: absolute;
     bottom: -50%;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; */
     /* abhi gradient hai */
     /* background: linear-gradient(135deg, #3a3af5, #18181a); */
   
     /* sirf black kar de */
-    background: #000;
+    /* background: #000;
   
     transform-origin: bottom center;
     transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
@@ -82,4 +82,226 @@
     transform: translateX(-50%) translateY(-100%);
     opacity: 1;
     transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
-  }
+  } */
+
+  /* ─── Sidebar Wrapper ───────────────────────────────────── */
+.sidebarWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.2rem 0.9rem;
+  height: 100%;
+}
+
+/* ─── Logo ──────────────────────────────────────────────── */
+.logo {
+  cursor: pointer;
+  padding: 0.2rem 0.5rem 0.8rem;
+  display: inline-block;
+}
+
+.logoText {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+/* ─── Nav Card (the creamy card) ────────────────────────── */
+.navCard {
+  background: #faf8f3;
+  border: 1px solid #ede9df;
+  border-radius: 16px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ─── Nav Item ──────────────────────────────────────────── */
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #555;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navItem:hover {
+  background: #f0ebe0;
+  color: #1a1a1a;
+}
+
+.navItemActive {
+  background: #fff;
+  color: #1a1a1a;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.navItemActive .navIcon {
+  opacity: 1;
+}
+
+.navLabel {
+  flex: 1;
+}
+
+.activeBar {
+  width: 4px;
+  height: 18px;
+  background: #4f6ef7;
+  border-radius: 99px;
+  position: absolute;
+  right: 10px;
+}
+
+/* ─── User Card ─────────────────────────────────────────── */
+.userCard {
+  background: #faf8f3;
+  border: 1px solid #ede9df;
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-top: auto;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.userGreet {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.userName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.userActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.userActionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 0;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+}
+
+.userActionBtn:hover {
+  background: #f0ebe0;
+  color: #1a1a1a;
+}
+
+.logoutBtn:hover {
+  background: #fff0f0;
+  color: #e53935;
+}
+
+/* ─── Join Button ───────────────────────────────────────── */
+.buttonJoin {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #18181a;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fff;
+  font-weight: bold;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  width: 100%;
+}
+
+.buttonJoin span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.buttonJoin span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.buttonJoin:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.buttonJoin:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.buttonJoin:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}

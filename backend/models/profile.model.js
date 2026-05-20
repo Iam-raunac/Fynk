@@ -23,6 +23,10 @@ const workingSchema = new mongoose.Schema({
         default:' ',
 
     },
+    position:{
+        type: String,
+        default:' ',
+    },
     postion:{
         type: String,
         default:' ',
@@ -38,6 +42,8 @@ const profileSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        index: true,
+        unique: true,
     },
     bio: {
         type: String,
@@ -59,6 +65,7 @@ const profileSchema = new mongoose.Schema({
 
 });
 
+profileSchema.index({ currentPost: 1 });
+
 const Profile = mongoose.model("Profile", profileSchema);
 export default Profile;
-
