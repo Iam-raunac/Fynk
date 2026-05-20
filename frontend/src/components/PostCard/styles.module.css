@@ -1,0 +1,624 @@
+/* .singleCard {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.singleCard_profileContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+}
+
+.singleCard_profileContainer > img {
+  width: 10%;
+  min-width: 48px;
+  max-width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.postContent {
+  width: 100%;
+  min-width: 0;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.username {
+  color: grey;
+}
+
+.body {
+  padding-top: 1.3rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+.singleCard_image {
+  width: 100%;
+  padding-top: 0.6rem;
+  overflow: hidden;
+}
+
+.singleCard_image > img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.fileLink {
+  display: inline-block;
+  color: #111;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.actionButton {
+  border: 1px solid #d9d9d9;
+  background: white;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actionButton strong {
+  font-size: 0.85rem;
+}
+
+.active {
+  background: rgb(238, 243, 244);
+  color: rgb(94, 118, 226);
+}
+
+.commentsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.9rem;
+}
+
+.commentInputRow {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.commentInput {
+  width: 100%;
+  border: 1px solid silver;
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  outline: none;
+}
+
+.commentButton {
+  border: 0;
+  background: rgb(94, 118, 226);
+  color: white;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.commentItem {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+
+.commentItem img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentBody {
+  background: rgb(238, 243, 244);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.commentHeader p {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.commentHeader button {
+  border: 0;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+}
+
+.subtleText {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .singleCard_profileContainer {
+    padding-inline: 0.2rem;
+  }
+
+  .singleCard_profileContainer > img {
+    min-width: 42px;
+  }
+
+  .actions {
+    gap: 0.4rem;
+  }
+
+  .actionButton {
+    padding-inline: 0.65rem;
+  }
+} */
+ /* ─── Card ─────────────────────────────────────────────── */
+.singleCard {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin-bottom: 0.8rem;
+  overflow: visible;
+  transition: box-shadow 0.2s;
+}
+
+.singleCard:hover {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+/* ─── Profile Row ───────────────────────────────────────── */
+.singleCard_profileContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1rem 0;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #f0f0f0;
+}
+
+.postContent {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.username {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #bbb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+}
+
+.iconButton:hover {
+  background: #fff0f0;
+  color: #e53935;
+}
+
+/* ─── Body & Media ──────────────────────────────────────── */
+.body {
+  padding-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #222;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.singleCard_image {
+  width: 100%;
+  padding-top: 0.75rem;
+  overflow: hidden;
+}
+
+.singleCard_image > img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.fileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.fileLink:hover {
+  background: #f5f5f5;
+}
+
+/* ─── Stats Row ─────────────────────────────────────────── */
+.statsRow {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0 0.1rem;
+  font-size: 0.82rem;
+  color: #777;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reactionEmojis {
+  display: inline-flex;
+  gap: 1px;
+  font-size: 0.85rem;
+}
+
+/* ─── Divider ───────────────────────────────────────────── */
+.actionsDivider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 0.4rem 0 0;
+}
+
+/* ─── Action Buttons ────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.25rem 0 0.5rem;
+}
+
+.actionButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.actionButton:hover {
+  background: #f0f2ff;
+  color: #4f6ef7;
+}
+
+.reacted {
+  color: var(--active-color, #4f6ef7) !important;
+}
+
+.reacted .reactionActive {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.activeBtn {
+  background: #f0f2ff;
+  color: #4f6ef7;
+}
+
+.copiedBtn {
+  color: #2e7d32 !important;
+  background: #f0faf0;
+}
+
+/* ─── Reaction Wrapper & Picker ─────────────────────────── */
+.reactionWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.reactionWrapper > button {
+  width: 100%;
+}
+
+.reactionPicker {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 50px;
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 100;
+  animation: pickerPop 0.18s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes pickerPop {
+  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.reactionOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0.2rem 0.25rem;
+  border-radius: 8px;
+  transition: transform 0.15s;
+}
+
+.reactionOption:hover {
+  transform: scale(1.35) translateY(-3px);
+}
+
+.reactionEmoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.reactionLabel {
+  font-size: 0.6rem;
+  color: #555;
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* ─── Comments Panel ────────────────────────────────────── */
+.commentsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0 1rem;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 0.1rem;
+}
+
+.commentInputRow {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.commentInputWrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.commentInput {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 0.55rem 2.5rem 0.55rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  background: #f8f8f8;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.commentInput:focus {
+  border-color: #4f6ef7;
+  background: #fff;
+}
+
+.commentSendBtn {
+  position: absolute;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: #4f6ef7;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.commentSendBtn:hover {
+  background: #3a5ce6;
+  transform: scale(1.08);
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.commentItem {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+
+.commentBubble {
+  background: #f4f6ff;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.commentName {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+}
+
+.commentText {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.deleteCommentBtn {
+  border: 0;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.deleteCommentBtn:hover {
+  color: #e53935;
+}
+
+.subtleText {
+  color: #999;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+/* ─── Mobile ────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .singleCard_profileContainer {
+    padding: 0.75rem 0.75rem 0;
+    gap: 0.65rem;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .actionButton {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.2rem;
+    gap: 0.25rem;
+  }
+
+  .reactionPicker {
+    padding: 0.3rem 0.4rem;
+    gap: 0.15rem;
+  }
+
+  .reactionEmoji {
+    font-size: 1.3rem;
+  }
+}
