@@ -60,7 +60,7 @@ app.use(express.static("uploads"))
 const start = async () => {
     try {
         await mongoose.connect(
-          "mongodb+srv://raunak1kumar2:K8kIG4brLOocLCGa@fynk.xzvivxb.mongodb.net/?retryWrites=true&w=majority&appName=Fynk"
+            process.env.MONGO_URI
         );
         console.log("Connected to MongoDB");
         app.listen(PORT, () => {
