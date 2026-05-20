@@ -179,6 +179,9 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
+    console.log("LOGIN HIT");
+
+    console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required" });
@@ -196,7 +199,15 @@ export const login = async (req, res) => {
 
     return res.json({ token });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    // return res.status(500).json({ message: error.message });
+    console.error("LOGIN ERROR:", error);
+    return res.status(500).json({
+
+      message: error.message,
+  
+      stack: error.stack
+  
+    });
   }
 };
 
