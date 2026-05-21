@@ -61,6 +61,6 @@ export const uploadFile = async (file, folder = "fynk") => {
     storageProvider: "local",
   };
 };
-// console.log(process.env.CLOUDINARY_CLOUD_NAME);
-// console.log(process.env.CLOUDINARY_API_KEY);
-// console.log(process.env.CLOUDINARY_API_SECRET);
+console.log(process.env.CLOUDINARY_CLOUD_NAME);
+console.log(process.env.CLOUDINARY_API_KEY);
+console.log(process.env.CLOUDINARY_API_SECRET);

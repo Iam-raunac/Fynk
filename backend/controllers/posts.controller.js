@@ -1,3 +1,9 @@
+console.log("Cloudinary config check:", {
+  cloud: !!process.env.CLOUDINARY_CLOUD_NAME,
+  key: !!process.env.CLOUDINARY_API_KEY,
+  secret: !!process.env.CLOUDINARY_API_SECRET,
+});
+
 import Comment from "../models/comments.model.js";
 import Like from "../models/likes.model.js";
 import Post from "../models/posts.model.js";
@@ -23,7 +29,8 @@ const getPagination = (req, defaultLimit = 20) => {
   };
 };
 
-const getBaseUrl = (req) => `${req.protocol}://${req.get("host")}`;
+// const getBaseUrl = (req) => `${req.protocol}://${req.get("host")}`;
+const getBaseUrl = (req) => `https://${req.get("host")}`;
 
 const withMediaUrl = (req, post) => {
   const plainPost = post.toObject ? post.toObject() : post;
