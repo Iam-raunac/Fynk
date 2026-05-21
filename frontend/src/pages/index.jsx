@@ -35,7 +35,13 @@ export default function Home() {
   </div>
 
   <div className={styles.mainContainer_right}>
-    <img height="400px" width='650px' src= "images/home_main_connection.jpg" alt=""/>
+    {/* <img height="400px" width='650px' src= "images/home_main_connection.jpg" alt=""/> */}
+    <img
+  height="400px"
+  width="650px"
+  src="/images/home_main_connection.jpg"
+  alt=""
+/>
 
 
   </div>
