@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { register , login, uploadProfilePicture,updateUserProfile, getUserAndProfile, getProfileByUsername, updateProfileData,getAllUserProfiles, dowloadProfile,sendConnectionRequest,getMyConnectionsRequest,whatAreMyConnections,getAcceptedConnections,acceptConnectionRequest} from '../controllers/user.controller.js';  // <- focus on this line
 import multer from 'multer';
-import crypto from 'crypto';
-import path from 'path';
+// import crypto from 'crypto';
+// import path from 'path';
 
 const router = Router();
 
@@ -24,11 +24,17 @@ const storage = multer.diskStorage({
 
 
 
+// const upload = multer({
+//   storage: storage,
+//   limits: {
+//     fileSize: 5 * 1024 * 1024,
+//   },
+// });
+
+// Remove all the diskStorage code and replace with:
 const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 5 * 1024 * 1024,
-  },
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 router.route("/update_profile_picture")

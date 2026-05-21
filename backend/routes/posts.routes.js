@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { activeCheck, createPost, getAllPosts, getPostsByUser, deletePost, commentPost, get_comments_by_post, delete_comment_of_user, increment_likes } from '../controllers/posts.controller.js';
 import multer from 'multer';
-import crypto from 'crypto';
-import path from 'path';
+// import crypto from 'crypto';
+// import path from 'path';
 
 
 const router = Router();
@@ -21,12 +21,18 @@ const storage = multer.diskStorage({
     },
 })
 
+// const upload = multer({
+//     storage: storage,
+//     limits: {
+//         fileSize: 5 * 1024 * 1024,
+//     },
+// });
+
+// Remove all the diskStorage code and replace with:
 const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 5 * 1024 * 1024,
-    },
-});
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 5 * 1024 * 1024 },
+  });
 
 
 router.route('/').get(activeCheck);
