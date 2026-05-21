@@ -1,5 +1,8 @@
 import fs from "fs/promises";
+import dotenv from "dotenv";
 import { v2 as cloudinary } from "cloudinary";
+
+dotenv.config({ path: "../.env" });
 
 const hasCloudinaryConfig = () =>
   Boolean(
@@ -56,3 +59,6 @@ export const uploadFile = async (file, folder = "fynk") => {
     storageProvider: "local",
   };
 };
+// console.log(process.env.CLOUDINARY_CLOUD_NAME);
+// console.log(process.env.CLOUDINARY_API_KEY);
+// console.log(process.env.CLOUDINARY_API_SECRET);
