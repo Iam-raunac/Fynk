@@ -1,336 +1,150 @@
-Fynk 🚀
+# Fynk
 
-A Modern AI-Powered Social Media Platform
+A social platform built from scratch — posts, profiles, connections, and an AI chat assistant baked right in.
 
-Fynk is a full-stack social media platform inspired by modern networking applications where users can connect, share posts, upload media, interact socially, and communicate with an AI-powered contextual chatbot.
+---
 
-Built with scalability, modularity, and real-world deployment practices in mind.
+## What it is
 
-⸻
+Fynk is a full-stack social media app where users can share posts, build a profile, connect with others, and talk to an AI assistant that actually knows who you are. No templates, no starters — built piece by piece with Next.js on the front and Express + MongoDB on the back.
 
-🌐 Live Deployment
+---
 
-Frontend (Vercel)
+## Features
 
-Fynk Frontend Live
+- **Auth** — register, login, JWT-protected routes
+- **Posts** — create with media (images), like, comment, delete
+- **Profiles** — custom profile picture, bio, update your info, view others by username
+- **Connections** — send, accept, and view connection requests
+- **AI Chat** — personal assistant powered by Gemini, aware of your name and username, supports Hinglish naturally
+- **Profile PDF** — download your profile as a PDF
+- **Media uploads** — handled via Cloudinary (no disk storage on server)
 
-Backend API (Render)
+---
 
-Fynk Backend API￼
+## Tech stack
 
-GitHub Repository
+**Frontend**
+- Next.js 15 (App Router)
+- React 19
+- Redux Toolkit
+- Axios
 
-Fynk GitHub Repository￼
+**Backend**
+- Node.js + Express 5
+- MongoDB + Mongoose
+- JWT + bcrypt for auth
+- Multer (memory storage) + Cloudinary for media
+- Google Gemini API for the AI assistant
 
-⸻
+**Deployment**
+- Frontend → Vercel
+- Backend → Render
 
-✨ Features
+---
 
-👥 Social Media Features
+## Project structure
 
-* User Authentication
-* User Profiles
-* Discover Users
-* Connection Requests
-* Feed / Scroll System
-* Like & Comment System
-* Media Uploads
-* Profile Pages
-* Responsive Dashboard
-* Real-time User Experience
-
-⸻
-
-🤖 AI Chatbot
-
-* Context-aware AI chatbot
-* Stores conversational context
-* Integrated into the social platform
-* Uses Gemini API
-* Persistent memory handling
-
-⸻
-
-☁️ Cloud Media Storage
-
-* Cloudinary integration
-* Image uploads
-* File uploads
-* CDN-based media delivery
-* Optimized cloud-hosted assets
-
-⸻
-
-🗄️ Database Architecture
-
-MongoDB Atlas
-
-Used for:
-
-* Users
-* Posts
-* Comments
-* Connections
-* Chatbot Context
-* Authentication Data
-
-Cloudinary
-
-Used for:
-
-* Images
-* Media Files
-* Post Uploads
-* Profile Pictures
-
-⸻
-
-🛠️ Tech Stack
-
-Frontend
-
-* Next.js
-* React.js
-* Redux
-* CSS Modules
-* Axios
-
-Backend
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* Cloudinary SDK
-* Multer
-
-AI
-
-* Gemini API
-
-Deployment
-
-* Vercel (Frontend)
-* Render (Backend)
-* MongoDB Atlas
-* Cloudinary
-
-⸻
-
-🧠 System Architecture
-
-Client (Next.js Frontend)
-        ↓
-REST APIs
-        ↓
-Node.js + Express Backend
-        ↓
-MongoDB Atlas Database
-        ↓
-Cloudinary Media Storage
-        ↓
-Gemini AI Chatbot Integration
-
-⸻
-
-📸 Platform Preview
-
-Feed / Scroll Section
-
-* Modern social feed
-* Media-rich posts
-* Interactive engagement system
-
-Discover Users
-
-* Find and connect with users
-* Responsive card-based UI
-* Social networking flow
-
-⸻
-
-🔒 Security Features
-
-* Environment Variables
-* Secure API Handling
-* Cloud-based media storage
-* MongoDB Atlas access control
-* Backend/frontend separation
-* Protected routes
-* Token-based authentication
-
-⸻
-
-⚡ Performance Optimizations
-
-* Cloudinary CDN delivery
-* Modular backend architecture
-* Optimized API structure
-* Lazy loading support
-* Efficient MongoDB queries
-* Media optimization pipeline
-
-⸻
-
-📂 Project Structure
-
+```
 Fynk/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── layout/
-│   │   ├── config/
-│   │   ├── styles/
-│   │   └── utils/
-│
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── config/
-│   └── uploads/
-│
-└── README.md
+├── frontend/          # Next.js app
+│   └── src/app/       # Pages and components
+└── backend/
+    ├── controllers/   # Business logic
+    ├── routes/        # posts, users, chat
+    ├── models/        # Mongoose schemas
+    ├── middleware/     # JWT auth
+    └── config/        # Env helpers
+```
 
-⸻
+---
 
-🚀 Installation & Setup
+## Getting started
 
-Clone Repository
+**Prerequisites:** Node.js 18+, a MongoDB connection string, Cloudinary account, Gemini API key
 
-git clone https://github.com/Iam-raunac/Fynk.git
-cd Fynk
+### Backend
 
-⸻
-
-Backend Setup
-
+```bash
 cd backend
 npm install
-npm start
+```
 
-Backend Environment Variables
+Create a `.env` file:
 
-MONGO_URI=
-PORT=
-GEMINI_API_KEY=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+```env
+PORT=9090
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+GEMINI_API_KEY=...
+```
 
-⸻
+```bash
+npm run dev
+```
 
-Frontend Setup
+### Frontend
 
+```bash
 cd frontend
 npm install
+```
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:9090
+```
+
+```bash
 npm run dev
+```
 
-⸻
+App runs at `http://localhost:3000`
 
-☁️ Deployment Workflow
+---
 
-Frontend Deployment
+## Environment variables
 
-* Hosted on Vercel
-* Auto-deployment via GitHub
+| Variable | Where | Purpose |
+|---|---|---|
+| `MONGO_URI` | backend | MongoDB connection |
+| `JWT_SECRET` | backend | Token signing |
+| `CLOUDINARY_*` | backend | Media uploads |
+| `GEMINI_API_KEY` | backend | AI chat |
+| `NEXT_PUBLIC_API_URL` | frontend | Points to backend |
 
-Backend Deployment
+---
 
-* Hosted on Render
-* Connected with MongoDB Atlas
-* Cloudinary integrated for storage
+## API routes
 
-⸻
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/register` | Create account |
+| POST | `/login` | Login |
+| POST | `/post` | Create post (with media) |
+| GET | `/posts` | All posts feed |
+| GET | `/posts/user/:username` | Posts by a user |
+| POST | `/increment_post_like` | Like a post |
+| POST | `/comment` | Comment on a post |
+| GET | `/profile/:username` | Get profile by username |
+| POST | `/update_profile_picture` | Upload profile picture |
+| POST | `/api/chat/message` | Send message to AI |
+| GET | `/api/chat/history` | Get chat history |
 
-🧩 Core Functionalities
+---
 
-Authentication
+## Notes
 
-* Login
-* Registration
-* Session handling
+- Media is stored using Cloudinary. Multer is configured with memory storage so nothing touches the server's filesystem — important for platforms like Render where the disk is ephemeral.
+- The AI chat assistant uses a system prompt that injects the user's name and username, making conversations feel personal rather than generic.
+- The connection system supports one-way requests with explicit accept — similar to LinkedIn's model.
 
-Social Interaction
+---
 
-* Connections
-* Discover users
-* Social feed
-* Like/comment system
+## Author
 
-Media Handling
-
-* Image uploads
-* Cloud storage
-* Optimized delivery
-
-AI Integration
-
-* Context retention
-* Smart chatbot interaction
-* Gemini-powered responses
-
-⸻
-
-🎯 Why This Project Stands Out
-
-This project demonstrates:
-
-* Full-stack engineering
-* Cloud deployment architecture
-* AI integration
-* Database management
-* Real-world scalability concepts
-* Modern frontend engineering
-* Secure backend development
-* Media optimization
-* API design principles
-
-Unlike simple CRUD projects, Fynk combines:
-
-* Social networking
-* AI systems
-* Cloud infrastructure
-* Scalable architecture
-* Media handling
-    into a single production-style platform.
-
-⸻
-
-📈 Future Improvements
-
-* Real-time messaging
-* WebSockets
-* Notifications
-* AI recommendation engine
-* Video uploads
-* Dark mode
-* Mobile app version
-* Infinite scrolling
-* OAuth Authentication
-
-⸻
-
-👨‍💻 Developer
-
-Raunak Kumar
-
-Full Stack Developer passionate about:
-
-* AI-integrated platforms
-* Scalable web systems
-* Modern frontend experiences
-* Backend architecture
-* Cloud-native applications
-
-GitHub:
-Raunac Jha GitHub￼
-
-⸻
-
-⭐ If you like this project
-
-Give it a ⭐ on GitHub and feel free to contribute!
+Built by [Raunak](https://github.com/Iam-raunac)
